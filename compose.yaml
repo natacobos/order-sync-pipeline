@@ -1,0 +1,13 @@
+# Runs the project with Python 3.12 without installing Python. Your folder is mounted, so every command uses your latest code.
+#   docker compose run --rm app python -m app.main
+#   docker compose run --rm app python -m unittest -v
+services:
+  app:
+    image: python:3.12.7-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    command: python -m app.main
